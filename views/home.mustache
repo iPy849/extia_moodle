@@ -1,0 +1,37 @@
+<h1 class="text-center my-2">Administra tus API-Key</h1>
+{{> views/partials/add_key_form }}
+{{#error}}
+    {{> views/partials/error_alert }}
+{{/error}}
+
+<section class="container-md my-4">
+    <table class="table table-borderless table-hover">
+    <thead>
+        <tr>
+        <th scope="col">Dominio</th>
+        <th scope="col">Key</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#domains}}
+            <tr>
+                <td scope="row">{{Name}}</td>
+                <td class="text-truncate">{{Key}}</td>
+                <td>
+                    <button type="button" class="ms-2 btn btn-sm btn-outline-secondary">
+                        <i class="bi bi-clipboard-check"></i>
+                    </button>
+                </td>
+                <td>
+                    <a href="/domains/{{ID}}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                </td>
+            </tr>
+        {{/domains}}
+    </tbody>
+    </table>
+</section>
+<section class="container d-flex justify-content-center">
+    <a href="/logout" class="text-danger text-center">Cerrar sesión</a>
+</section>
+
+<script defer src="static/js/home.js"></script>

@@ -1,0 +1,10 @@
+### Home
+GET {{host}}
+###
+
+### Protected home should fail
+GET {{api}}
+Authorization: Bearer {{auth_token}}
+
+###
+

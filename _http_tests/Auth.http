@@ -1,0 +1,42 @@
+### Registration
+< {%
+    client.global.set("email", $random.email)
+    client.global.set("password", $random.alphanumeric(10))
+%}
+POST {{api}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+> {%
+    client.test("Correct registration", function(){
+        client.assert(response.status === 201, "Registration failed")
+    });
+%}
+
+###
+
+### Login
+POST {{api}}/auth
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+> {%
+    client.test("Should return a valid user", function () {
+        client.assert(response.status === 200, "Login failed")
+        client.global.set("auth_token", response.body.token)
+    })
+%}
+###
+
+### Recover
+POST {{api}}/auth/recover
+Content-Type: application/json
+
+###

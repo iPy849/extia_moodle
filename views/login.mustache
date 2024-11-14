@@ -1,0 +1,31 @@
+<main class="container sign-in-form">
+    <form action="/login" method="post" class="bg-light p-5 rounded mt-3" novalidate>
+        <h1>Ingresa a tu cuenta</h1>
+        {{#feedback}}
+            {{> views/partials/success_alert }}
+        {{/feedback}}
+        {{#error}}
+            {{> views/partials/error_alert }}
+        {{/error}}
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="email" id="correo" aria-describedby="emailHelp" placeholder="nombre@dominio.com" required>
+            <label for="correo">Correo</label>
+            <div class="invalid-feedback">
+                Correo inválido
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Escriba su contraseña" required>
+            <label for="password">Contraseña</label>
+            <div class="invalid-feedback">
+                Contraseña inválida
+            </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+          <a class="d-block btn btn-link" type="button" href="/sign-up">¿Aún no tienes una cuenta?</a>
+          <button type="submit" class="btn btn-primary me-md-2">Ingresar a ExtIA</button>
+        </div>
+    </form>
+  </div>
+</main>
+<script defer src="static/js/login.js"></script>
